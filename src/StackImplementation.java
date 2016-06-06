@@ -8,10 +8,10 @@ public class StackImplementation implements StackInterface{
 	
 	private int elements[] = new int[10];
 	
-	private int sp = 0; 
+	private int stackPointer = 0; 
 
 	private void resizeArrayOnDemand(){
-		if(sp == elements.length-1){
+		if(stackPointer == elements.length-1){
 			elements = Arrays.copyOf(elements, elements.length * INCREMENT_FACTOR);
 		}
 	}
@@ -19,21 +19,21 @@ public class StackImplementation implements StackInterface{
 	@Override
 	public void push(int value) {
 		resizeArrayOnDemand();
-		elements[sp] = value;
-		sp++;
+		elements[stackPointer] = value;
+		stackPointer++;
 		
 		
 	}
 
 	@Override
 	public int pop() throws InvalidActivityException {
-		if(sp==0) throw new InvalidActivityException("");
-		return elements[--sp];
+		if(stackPointer==0) throw new InvalidActivityException("");
+		return elements[--stackPointer];
 	}
 
 	@Override
 	public int size() {
-		return sp;
+		return stackPointer;
 	}
 
 	
